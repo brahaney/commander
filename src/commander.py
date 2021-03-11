@@ -35,7 +35,7 @@ class ComposeService():
             message = "The server is running."
         elif "Paused" in status:
             up = False
-            message "The server is paused. `!unpause` to resume."
+            message = "The server is paused. `!unpause` to resume."
         if verbose:
             message = f"{message}\n```{stdout}```"
         return up, message
