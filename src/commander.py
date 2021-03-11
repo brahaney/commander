@@ -126,14 +126,14 @@ async def stop(ctx, *args):
 @bot.command()
 async def pause(ctx, *args):
     verbose = "verbose" in args
-    message = stardew.stop(verbose=verbose)
+    message = stardew.pause(verbose=verbose)
 
     await ctx.send(message)
 
 @bot.command()
 async def unpause(ctx, *args):
     verbose = "verbose" in args
-    message = stardew.stop(verbose=verbose)
+    message = stardew.unpause(verbose=verbose)
 
     await ctx.send(message)
 
