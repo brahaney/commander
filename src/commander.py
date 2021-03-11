@@ -58,7 +58,7 @@ class ComposeService():
             message = f"{message}\n```{stdout}```"
         return message
 
-    def pause(self, verbose=False):
+    def unpause(self, verbose=False):
         compose_cmd = "unpause"
         stdout = self._compose_exec(compose_cmd)
         message = "The server is unpaused."
