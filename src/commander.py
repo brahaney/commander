@@ -29,10 +29,13 @@ class ComposeService():
 
         # form the final message for discord
         up = False
-        message = "The server is not started."
+        message = "The server is not started. `!start` to start it. Don't forget to login to host to launch farm."
         if "Up" in status:
             up = True 
-            message = "The server is started."
+            message = "The server is running."
+        elif "Paused" in status:
+            up = False
+            message "The server is paused. `!unpause` to resume."
         if verbose:
             message = f"{message}\n```{stdout}```"
         return up, message
@@ -43,6 +46,22 @@ class ComposeService():
         compose_cmd = "start"
         stdout = self._compose_exec(compose_cmd)
         message = "The server is starting up..."
+        if verbose:
+            message = f"{message}\n```{stdout}```"
+        return message
+
+    def pause(self, verbose=False):
+        compose_cmd = "pause"
+        stdout = self._compose_exec(compose_cmd)
+        message = "The server is paused."
+        if verbose:
+            message = f"{message}\n```{stdout}```"
+        return message
+
+    def pause(self, verbose=False):
+        compose_cmd = "unpause"
+        stdout = self._compose_exec(compose_cmd)
+        message = "The server is unpaused."
         if verbose:
             message = f"{message}\n```{stdout}```"
         return message
@@ -99,6 +118,20 @@ async def start(ctx, *args):
 
 @bot.command()
 async def stop(ctx, *args):
+    verbose = "verbose" in args
+    message = stardew.stop(verbose=verbose)
+
+    await ctx.send(message)
+
+@bot.command()
+async def pause(ctx, *args):
+    verbose = "verbose" in args
+    message = stardew.stop(verbose=verbose)
+
+    await ctx.send(message)
+
+@bot.command()
+async def unpause(ctx, *args):
     verbose = "verbose" in args
     message = stardew.stop(verbose=verbose)
 
