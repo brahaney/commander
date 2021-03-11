@@ -1,0 +1,12 @@
+version: '2.2'
+
+services:
+  commander:
+    build: .
+    container_name: commander
+    environment:
+      - DOCKER_COMPOSE_FILE=/home/stardew/stardew-multiplayer-docker/docker-compose.yml
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+    volumes:
+      - ../stardew-multiplayer-docker:/home/stardew/stardew-multiplayer-docker
+      - /var/run/docker.sock:/var/run/docker.sock
